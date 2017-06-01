@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1, maximum-scale=1,,user-scalable=no">
+		<title></title>
+		<style>
+			.all {
+				width: 100%;
+			}
+			
+			img {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="id2" class="all">
+			<img src="img/1.png" />
+		</div>
+		<div id="id2">
+			<img id="id3" src="" alt="" />
+		</div>
+	</body>
+	<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/html2canvas.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		html2canvas(document.getElementById("id2"), {
+			onrendered: function(canvas) {
+//				document.getElementById("id2").appendChild(canvas); //生成画布后如何处理，当然可以在新标签打开，在浮层展示等等 
+				
+				var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+			
+				document.getElementById('id3').src = image;
+			}
+			
+		});
+	</script>
+
+</html>
